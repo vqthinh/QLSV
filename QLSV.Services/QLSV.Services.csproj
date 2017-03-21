@@ -41,6 +41,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\SinhVienService.cs" />
+    <Compile Include="Services\TaiKhoanService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\QLSV.Abstract\QLSV.Abstract.csproj">
+      <Project>{0bf4f8c1-a31a-4c25-a5be-f1777581f10b}</Project>
+      <Name>QLSV.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLSV.Common\QLSV.Common.csproj">
+      <Project>{5c69dd37-0705-43cd-93fd-b7151f6a34ce}</Project>
+      <Name>QLSV.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLSV.Entities\QLSV.Entities.csproj">
+      <Project>{1881B69D-0850-4DDA-B30C-F011823E4534}</Project>
+      <Name>QLSV.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLSV.Repositories\QLSV.Repositories.csproj">
+      <Project>{64E092D1-17BC-41D5-898C-39DBE1B369AF}</Project>
+      <Name>QLSV.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLSV.Utilities\QLSV.Utilities.csproj">
+      <Project>{a59a98e3-0c9c-432e-acbe-d27e5cff6580}</Project>
+      <Name>QLSV.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

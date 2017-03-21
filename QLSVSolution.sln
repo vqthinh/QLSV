@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLSV.Utilities", "QLSV.Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLSV.Web", "QLSV.Web\QLSV.Web.csproj", "{BA1E3AE7-ACBE-462E-897C-8B64D0921BB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLSV.Abstract", "QLSV.Abstract\QLSV.Abstract.csproj", "{0BF4F8C1-A31A-4C25-A5BE-F1777581F10B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BA1E3AE7-ACBE-462E-897C-8B64D0921BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA1E3AE7-ACBE-462E-897C-8B64D0921BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA1E3AE7-ACBE-462E-897C-8B64D0921BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF4F8C1-A31A-4C25-A5BE-F1777581F10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF4F8C1-A31A-4C25-A5BE-F1777581F10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF4F8C1-A31A-4C25-A5BE-F1777581F10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF4F8C1-A31A-4C25-A5BE-F1777581F10B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

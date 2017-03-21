@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEntityBase.cs" />
+    <Compile Include="Models\DataTableResult.cs" />
+    <Compile Include="Models\JQueryDataTableParamModel.cs" />
+    <Compile Include="Models\Khoa.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Lop.cs" />
+    <Compile Include="Models\SinhVien.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

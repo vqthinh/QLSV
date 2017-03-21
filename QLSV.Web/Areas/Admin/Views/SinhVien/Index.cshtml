@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<button class="btn btn-primary" style="margin-bottom: 10px" onclick="addNew()"><i class="fa fa-plus" style="margin-right: 10px"></i>Thêm mới</button>
+<table style="width: 100%" id="sinhvien-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">STT</th>
+            <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">Mã Sinh Viên</th>
+            <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">Họ Đệm</th>
+            <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">Tên</th>
+            <th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">Lớp</th>
+            <th class="hidden-480 sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">Khoa</th>
+            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 150px;">
+                Thao tác
+            </th>
+        </tr>
+    </thead>
+
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script>
+    $(document).ready(function() {
+        function initDataTable(selector) {
+            var tableConfig = Global.Config.DatatableConfig;
+            tableConfig.searching = true,
+            tableConfig.pageLength = 10,
+            tableConfig.processing = true;
+            tableConfig.serverSide = true;
+            tableConfig.info = true;
+            tableConfig.stateSave = false;
+            tableConfig.ajaxSource = 'SinhVien/GetList';
+            tableConfig.bDestroy = true;
+            tableConfig.fnCreatedRow = function (row, data, index) {
+                $('td', row).eq(0).html(index + 1);
+            },
+                tableConfig.fnServerData = function (sSource, aoData, fnCallback) {
+
+                    $.ajax({
+                        "dataType": 'json',
+                        "contentType": "application/json; charset=utf-8",
+                        "type": "GET",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": function (data) {
+                            fnCallback(data);
+                        }
+                    });
+                }
+            tableConfig.columns = [
+                {
+                    "data": null,
+                    "orderable": false
+                },
+                {
+                    "data": "MaSv",
+                    "orderable": false
+                },
+                {
+                    "data": "HoDem",
+                    "orderable": false
+                },
+                {
+                    "data": "Ten",
+                    "orderable": false
+                },
+                  {
+                      "data": "TenLop",
+                      "orderable": false
+                  },
+                    {
+                        "data": "TenKhoa",
+                        "orderable": false
+                    },
+                {
+                    "data": "Id",
+                    "orderable": false,
+                    "render": function (id) {
+                        var result =
+                            '<div class="hidden-sm hidden-xs action-buttons" style="text-align: center">' +
+                               '<a class="dark" onclick="getQrCode(this)" id="' + id + '" href="' +
+                                id + '"><i class="ace-icon fa fa-qrcode bigger-130"></i></a>' +
+                                '<a class="blue" href="Artifact/Detail/' +
+                                id +
+                                '"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>' +
+                                '<a class="green" href="Artifact/Update/' +
+                                id +
+                                '"><i class="ace-icon fa fa-pencil bigger-130"></i></a>' +
+                                '<a class="red" onclick="deleted()" href="Artifact/Delete/' +
+                                id +
+                                '"><i class="ace-icon fa fa-trash-o bigger-130"></i></a></div>' +
+                                '<div class="hidden-md hidden-lg"><div class="inline pos-rel">' +
+                                '<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">' +
+                                '<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i></button>' +
+                                '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">' +
+                                '<li><a class="dark" onclick="getQrCode(this)" href="' +
+                                id + '"><i class="ace-icon fa fa-qrcode bigger-130"></i></a></li>' +
+                                '<li><a href="Artifact/Detail/' +
+                                id +
+                                '" class="tooltip-info" data-rel="tooltip" title="View"><span class="blue"><i class="ace-icon fa fa-search-plus bigger-120"></i></span></a></li>' +
+                                '<li><a href="Artifact/Update/' +
+                                id +
+                                '" class="tooltip-success" data-rel="tooltip" title="Update"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a></li>' +
+                                '<li><a href="Artifact/Delete/' +
+                                id +
+                                '" class="tooltip-error" onclick="deleted()" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span></a></li>' +
+                                '</ul></div></div>';
+                        return result;
+                    }
+                }
+            ];
+            return $('#' + selector).dataTable(tableConfig).fn;
+
+
+        }
+
+        initDataTable("sinhvien-table");
+    });
+</script>
+}
