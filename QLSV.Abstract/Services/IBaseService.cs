@@ -11,6 +11,12 @@ namespace QLSV.Abstract.Services
 
         bool Add(TEntity entity);
 
+        bool Update(TEntity entity);
+
+        bool Delete(int id);
+
+        TEntity GetById(int id);
+
         int Total();
     }
 }

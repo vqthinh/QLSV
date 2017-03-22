@@ -12,6 +12,8 @@ namespace QLSV.Abstract.Repositories
 
         bool Update(TEntity entity);
 
+        bool Delete(int id);
+
         IList<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes);
 
         IList<TEntity> GetPage(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,

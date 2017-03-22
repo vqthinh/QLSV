@@ -7,5 +7,7 @@ namespace QLSV.Abstract.Services
     public interface ISinhVienService : IBaseService<SinhVien>
     {
         IList<SinhVien> GetListSinhViens(string keyword, int page, int size);
+
+        IList<Khoa> GetKhoa();
     }
 }

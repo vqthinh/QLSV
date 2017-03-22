@@ -89,5 +89,19 @@ namespace QLSV.Repositories.Repositories
         {
             return _dbSet.Find(id);
         }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                var entity = GetById(id);
+                _dbSet.Remove(entity);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
     }
 }

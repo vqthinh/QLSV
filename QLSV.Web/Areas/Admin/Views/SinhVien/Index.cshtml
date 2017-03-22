@@ -1,9 +1,141 @@
-﻿@{
+﻿@using DevExtreme.AspNet.Mvc
+@{
     ViewBag.Title = "title";
     Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<button class="btn btn-primary" style="margin-bottom: 10px" onclick="addNew()"><i class="fa fa-plus" style="margin-right: 10px"></i>Thêm mới</button>
+
+@(Html.DevExtreme().DataGrid()
+    .Columns(columns =>
+    {
+        columns.Add()
+            .DataField("MaSv")
+            .Caption("Mã SV");
+        columns.Add()
+            .DataField("HoDem")
+            .Caption("Họ Đệm");
+        columns.Add()
+            .DataField("Ten")
+            .Caption("Tên");
+        columns.Add()
+            .DataField("LopHocId")
+            .Caption("Lớp")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetLop").Key("Id"))
+                .DataSourceOptions(x=>x.Filter("1"))
+                .DisplayExpr("Ten")
+                .ValueExpr("Id")
+            );
+        columns.Add()
+            .DataField("KhoaId")
+            .Caption("Khoa")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetKhoa").Key("Id"))
+                .DisplayExpr("TenKhoa")
+                .ValueExpr("Id")
+            );
+        columns.Add()
+            .Caption("Ngày Sinh")
+            .DataField("NgaySinh")
+            .DataType(GridColumnDataType.Date);
+        columns.Add()
+            .DataField("HoKhau")
+            .Caption("Hộ Khẩu")
+            .Visible(false);
+        columns.Add()
+            .DataField("QuocTich")
+            .Caption("Quốc Tịch")
+            .Visible(false);
+        columns.Add()
+            .DataField("DiaChi")
+            .Caption("Địa Chỉ")
+            .Visible(false);
+        columns.Add()
+            .DataField("NoiSinh")
+            .Caption("Nơi Sinh")
+            .Visible(false);
+        columns.Add()
+            .DataField("DanToc")
+            .Caption("Dân Tộc")
+            .Visible(false);
+        columns.Add()
+            .DataField("DienThoai")
+            .Caption("Điện Thoại")
+            .Visible(false);
+        columns.Add()
+            .DataField("Email")
+            .ValidationRules(rules =>
+            {
+                rules.AddEmail().Message("Email sai định dạng");
+            })
+            .Visible(false);
+        columns.Add()
+            .DataField("Cmnd")
+            .Caption("Số CMND")
+            .Visible(false);
+        columns.Add()
+            .DataField("NgayCap")
+            .Caption("Ngày Cấp")
+            .DataType(GridColumnDataType.Date)
+            .Visible(false);
+        columns.Add()
+            .DataField("NoiCap")
+            .Caption("Nơi Cấp")
+            .Visible(false);
+        columns.Add()
+            .DataField("HoTenCha")
+            .Caption("Họ Tên Cha")
+            .Visible(false);
+        columns.Add()
+            .DataField("DienThoaiCha")
+            .Caption("Điện Thoại Cha")
+            .Visible(false);
+        columns.Add()
+            .DataField("HoTenMe")
+            .Caption("Họ Tên Mẹ")
+            .Visible(false);
+        columns.Add()
+            .DataField("DienThoaiMe")
+            .Caption("Điện Thoại Mẹ")
+            .Visible(false);
+        columns.Add()
+            .DataField("GioiTinh")
+            .Caption("Giới Tính")
+            .Visible(false);
+        columns.Add()
+            .DataField("Deleted")
+            .Caption("Trạng Thái")
+            .Visible(false);
+    })
+        .Paging(paging => paging.PageSize(2))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new List<int> { 2, 4, 6 });
+        pager.ShowInfo(true);
+    })
+    .DataSource(d => d.WebApi().Controller("SinhVienApi").Key("Id"))
+    .FilterRow(f => f.Visible(false))
+    .GroupPanel(p => p.Visible(false))
+    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+    .ShowBorders(true)
+    .Editing(editing =>
+    {
+        editing.Mode(GridEditMode.Form);
+        editing.AllowUpdating(true);
+        editing.AllowAdding(true);
+        editing.AllowDeleting(true);
+    })
+    .RemoteOperations(true)
+    .AllowColumnReordering(true)
+    .AllowColumnResizing(true)
+    .ColumnAutoWidth(true)
+    .ColumnChooser(c => c.Enabled(true))
+    .ColumnFixing(c => c.Enabled(true))
+
+)
+
+@*<button class="btn btn-primary" style="margin-bottom: 10px" onclick="addNew()"><i class="fa fa-plus" style="margin-right: 10px"></i>Thêm mới</button>
 <table style="width: 100%" id="sinhvien-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
     <thead>
         <tr role="row">
@@ -120,4 +252,4 @@
         initDataTable("sinhvien-table");
     });
 </script>
-}
+}*@

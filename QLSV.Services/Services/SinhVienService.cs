@@ -22,6 +22,9 @@ namespace QLSV.Services.Services
             return _sinhVienRepository.GetPage(p => p.OrderBy(x => x.MaSv), p => p.Ten.ToLower().Contains(keyword.ToLower()) || p.HoDem.ToLower().Contains(keyword.ToLower()), page, size);
         }
 
-
+        public IList<Khoa> GetKhoa()
+        {
+            return _sinhVienRepository.GetKhoas();
+        }
     }
 }

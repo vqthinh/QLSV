@@ -42,5 +42,38 @@ namespace QLSV.Services.Services
         {
             return Repository.Total();
         }
+
+        public bool Update(TEntity entity)
+        {
+            try
+            {
+                Repository.Update(entity);
+                UnitOfWork.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                Repository.Delete(id);
+                UnitOfWork.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public TEntity GetById(int id)
+        {
+            return Repository.GetById(id);
+        }
     }
 }

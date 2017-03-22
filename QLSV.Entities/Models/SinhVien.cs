@@ -15,7 +15,7 @@ namespace QLSV.Entities.Models
         [Column("ten")]
         public string Ten { get; set; }
         [Column("lop_hoc_id")]
-        public int LopHocId { get; set; }
+        public int? LopHocId { get; set; }
         [Column("khoa_hoc")]
         public int? KhoaHocId { get; set; }
         [Column("ngay_sinh")]
@@ -58,9 +58,5 @@ namespace QLSV.Entities.Models
         public virtual Khoa Khoa { get; set; }
         [Column("trang_thai")]
         public bool Deleted { get; set; }
-        [NotMapped]
-        public string TenLop => Lop.Ten;
-        [NotMapped]
-        public string TenKhoa => Khoa.TenKhoa;
     }
 }

@@ -22,6 +22,7 @@ namespace QLSV.Web.Areas.Admin.Controllers
             return View();
         }
 
+
         public JsonResult GetList(JQueryDataTableParamModel param)
         {
             var list = _sinhVienService.GetListSinhViens(param.sSearch, param.iDisplayStart / param.iDisplayLength, param.iDisplayLength);
