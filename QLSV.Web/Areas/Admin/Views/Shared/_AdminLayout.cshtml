@@ -68,42 +68,10 @@
                 </a>
             </div>
 
-            <div class="navbar-buttons navbar-header pull-right" role="navigation">
-                <ul class="nav ace-nav">
-                    <li class="light-blue dropdown-modal">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="~/Content/templates/admin/images/avatars/user.png" alt="Jason's Photo" />
-                            <span class="user-info">
-                                <small>Xin Chào</small>
-                                Vĩnh Quốc Thịnh
-                            </span>
-
-                            <i class="ace-icon fa fa-caret-down"></i>
-                        </a>
-
-                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="/Admin/Users/EditProfile">
-                                    <i class="ace-icon fa fa-user"></i>
-                                    Thay đổi thông tin
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Admin/Users/ChangePassword">
-                                    <i class="ace-icon fa fa-lock"></i>
-                                    Đổi mật khẩu
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Admin/Users/Logout">
-                                    <i class="ace-icon fa fa-power-off"></i>
-                                    Đăng xuất
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <!--Login-->
+            @{
+                Html.RenderAction("_LoginInfo","SinhVien");
+            }
         </div><!-- /.navbar-container -->
     </div>
 

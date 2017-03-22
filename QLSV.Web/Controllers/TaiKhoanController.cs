@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
 using QLSV.Abstract.Services;
@@ -33,10 +35,23 @@ namespace QLSV.Web.Controllers
                 FormsAuthentication.SetAuthCookie(taiKhoan.TenDangNhap, true);
                 var thongTin = _taiKhoanService.ThongTinDangNhap(taiKhoanDangNhap);
                 var stringThongTin = JsonConvert.SerializeObject(thongTin);
+                var cookie = new HttpCookie("UserInfo")
+                {
+                    Value = HttpUtility.UrlEncode(stringThongTin)
+                };
+                HttpContext.Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "SinhVien",new {Area="Admin"});
             }
             TempData["Error"] = "Đăng nhập không thành công.";
             return View();
+        }
+
+        public ActionResult DangXuat()
+        {
+            var responseCookie = Response.Cookies["UserInfo"];
+            if (responseCookie != null) responseCookie.Expires = DateTime.Now.AddDays(-1);
+            FormsAuthentication.SignOut();
+            return RedirectToAction("DangNhap");
         }
     }
 }

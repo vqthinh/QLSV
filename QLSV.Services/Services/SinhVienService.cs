@@ -19,7 +19,7 @@ namespace QLSV.Services.Services
         {
             if (string.IsNullOrEmpty(keyword))
                 return _sinhVienRepository.GetPage(p => p.OrderBy(x => x.MaSv), null, page, size);
-            return _sinhVienRepository.GetPage(p => p.OrderBy(x => x.MaSv), p => p.Ten.ToLower().Contains(keyword.ToLower()), page, size);
+            return _sinhVienRepository.GetPage(p => p.OrderBy(x => x.MaSv), p => p.Ten.ToLower().Contains(keyword.ToLower()) || p.HoDem.ToLower().Contains(keyword.ToLower()), page, size);
         }
 
 

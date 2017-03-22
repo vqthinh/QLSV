@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
+using Newtonsoft.Json;
 using QLSV.Entities.Models;
 using QLSV.Services.Services;
 using QLSV.Web.Models;
@@ -17,7 +19,6 @@ namespace QLSV.Web.Areas.Admin.Controllers
         // GET: Admin/SinhVien
         public ActionResult Index()
         {
-            var list = _sinhVienService.GetAll();
             return View();
         }
 
@@ -38,6 +39,24 @@ namespace QLSV.Web.Areas.Admin.Controllers
                 recordsFiltered = _sinhVienService.Total(),
                 recordsTotal = list.Count
             },JsonRequestBehavior.AllowGet);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult _LoginInfo()
+        {
+            var oldCookie = HttpContext.Request.Cookies["UserInfo"];
+            if (oldCookie != null)
+            {
+                var loginString = HttpUtility.UrlDecode(oldCookie.Value);
+                var loginModel = JsonConvert.DeserializeObject<LoginModel>(loginString);
+                return PartialView(loginModel);
+            }
+            return PartialView();
+        }
+
+        public ActionResult Add()
+        {
+            return View();
         }
     }
 }
