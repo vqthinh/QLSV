@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IEntityBase.cs" />
     <Compile Include="Models\DataTableResult.cs" />
+    <Compile Include="Models\DiemRenLuyen.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\Khoa.cs" />
     <Compile Include="Models\LoginModel.cs" />

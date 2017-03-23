@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using QLSV.Abstract.Repositories;
 using QLSV.Entities.Models;
 
@@ -16,6 +18,11 @@ namespace QLSV.Repositories.Repositories
         public List<Khoa> GetKhoas()
         {
             return _context.Set<Khoa>().ToList();
+        }
+
+        public new IList<SinhVien> GetAll(params Expression<Func<SinhVien, object>>[] includes)
+        {
+            return _context.Set<SinhVien>().Where(x => x.Deleted == false).ToList();
         }
     }
 }

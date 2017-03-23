@@ -24,15 +24,24 @@ namespace QLSV.Web.Controllers
         [HttpGet]
         public HttpResponseMessage Get(DataSourceLoadOptions loadOptions)
         {
-            var obj = DataSourceLoader.Load(_sinhVienService.GetAll(), loadOptions);
+            var obj = DataSourceLoader.Load(_sinhVienService.GetAll(x=>x.Deleted==false), loadOptions);
             return Request.CreateResponse(obj);
         }
 
         [HttpGet]
-        public HttpResponseMessage GetLop(DataSourceLoadOptions loadOptions)
+        public HttpResponseMessage GetLop(DataSourceLoadOptions loadOptions,int? id)
         {
-            var obj = DataSourceLoader.Load(_lopService.GetAll(), loadOptions);
-            return Request.CreateResponse(obj);
+            if (id == 0)
+            {
+                var obj = DataSourceLoader.Load(_lopService.GetAll(), loadOptions);
+                return Request.CreateResponse(obj);
+            }
+            else
+            {
+                var obj = DataSourceLoader.Load(_lopService.GetByKhoaId(id.GetValueOrDefault()), loadOptions);
+                return Request.CreateResponse(obj);
+            }
+
         }
 
         [HttpPost]

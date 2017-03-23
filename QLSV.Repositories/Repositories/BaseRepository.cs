@@ -95,7 +95,7 @@ namespace QLSV.Repositories.Repositories
             try
             {
                 var entity = GetById(id);
-                _dbSet.Remove(entity);
+                entity.Deleted = true;
                 return true;
             }
             catch 
