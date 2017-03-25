@@ -46,6 +46,7 @@
     <Compile Include="Models\DiemRenLuyen.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\Khoa.cs" />
+    <Compile Include="Models\KhoaHoc.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Lop.cs" />
     <Compile Include="Models\SinhVien.cs" />

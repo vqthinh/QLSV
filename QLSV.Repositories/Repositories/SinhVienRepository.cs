@@ -19,10 +19,5 @@ namespace QLSV.Repositories.Repositories
         {
             return _context.Set<Khoa>().ToList();
         }
-
-        public new IList<SinhVien> GetAll(params Expression<Func<SinhVien, object>>[] includes)
-        {
-            return _context.Set<SinhVien>().Where(x => x.Deleted == false).ToList();
-        }
     }
 }

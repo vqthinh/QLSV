@@ -19,6 +19,7 @@ namespace QLSV.Web.Areas.Admin.Controllers
         // GET: Admin/SinhVien
         public ActionResult Index()
         {
+            ViewBag.Menu = "Quản lý Sinh Viên";
             return View();
         }
 

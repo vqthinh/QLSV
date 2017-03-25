@@ -30,7 +30,7 @@
             .Caption("Khoa")
             .Lookup(lookup => lookup
                 .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetKhoa").Key("Id"))
-                .DisplayExpr("TenKhoa")
+                .DisplayExpr("Ten")
                 .ValueExpr("Id")
             )
             .SetCellValue("loadKhoa");
@@ -45,6 +45,9 @@
         columns.Add()
             .DataField("QuocTich")
             .Caption("Quốc Tịch")
+            .Lookup(lookup => lookup
+                .DataSource(new JS("getNationalites"))
+            )
             .Visible(false);
         columns.Add()
             .DataField("DiaChi")
@@ -107,6 +110,7 @@
             .Caption("Trạng Thái")
             .Visible(false);
     })
+    .HeaderFilter(headerFilter => headerFilter.Visible(true))
     .OnEditorPreparing("onEditorPreparing")
     .Paging(paging => paging.PageSize(3))
     .Pager(pager =>
@@ -158,7 +162,12 @@
             e.editorOptions.placeholder = "Chọn Khoa";
         } else if (e.parentType === "dataRow" && e.dataField === "LopHocId") {
             e.editorOptions.placeholder = "Chọn Lớp";
+        } else if (e.parentType === "dataRow" && e.dataField === "QuocTich") {
+            e.editorOptions.placeholder = "Chọn Quốc Tịch";
         }
+    }
+    getNationalites = function() {
+        return nationalities;
     }
 </script>
 

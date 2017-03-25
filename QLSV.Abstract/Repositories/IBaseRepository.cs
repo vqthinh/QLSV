@@ -24,5 +24,7 @@ namespace QLSV.Abstract.Repositories
         int GetTotal();
 
         int Total();
+
+        IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
     }
 }

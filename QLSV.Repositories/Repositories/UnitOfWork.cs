@@ -63,6 +63,9 @@ namespace QLSV.Repositories.Repositories
                 case "TAIKHOAN":
                     entityRepository = new TaiKhoanRepository(_dataContext);
                     break;
+                case "DIEMRENLUYEN":
+                    entityRepository = new DiemRenLuyenRepository(_dataContext);
+                    break;
             }
 
             _repositories.Add(entityType, entityRepository);

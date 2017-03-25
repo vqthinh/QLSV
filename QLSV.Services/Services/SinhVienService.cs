@@ -2,6 +2,7 @@
 using System.Linq;
 using QLSV.Abstract.Repositories;
 using QLSV.Abstract.Services;
+using QLSV.Common.Enum;
 using QLSV.Entities.Models;
 
 namespace QLSV.Services.Services
@@ -9,10 +10,14 @@ namespace QLSV.Services.Services
     public class SinhVienService : BaseService<SinhVien>,ISinhVienService
     {
         private readonly ISinhVienRepository _sinhVienRepository;
+        private readonly IDiemRenLuyenRepository _diemRenLuyenRepository;
+        private readonly ITaiKhoanRepository _taiKhoanRepository;
 
         public SinhVienService()
         {
             _sinhVienRepository = UnitOfWork.Repository<SinhVien>() as ISinhVienRepository;
+            _diemRenLuyenRepository = UnitOfWork.Repository<DiemRenLuyen>() as IDiemRenLuyenRepository;
+            _taiKhoanRepository = UnitOfWork.Repository<TaiKhoan>() as ITaiKhoanRepository;
         }
 
         public IList<SinhVien> GetListSinhViens(string keyword, int page, int size)
@@ -25,6 +30,31 @@ namespace QLSV.Services.Services
         public IList<Khoa> GetKhoa()
         {
             return _sinhVienRepository.GetKhoas();
+        }
+
+        public new bool Add(SinhVien sinhVien)
+        {
+            var countSv = _sinhVienRepository.Where(x => x.MaSv == sinhVien.MaSv).Any();
+            if (!countSv)
+            {
+                _sinhVienRepository.Add(sinhVien);
+                UnitOfWork.SaveChanges();
+                _diemRenLuyenRepository.Add(new DiemRenLuyen
+                        {
+                            SinhVienId = sinhVien.Id
+                        }
+                    );
+                _taiKhoanRepository.Add(new TaiKhoan
+                {
+                    TenDangNhap = "sv" + sinhVien.MaSv,
+                    MatKhau = sinhVien.MaSv,
+                    IdNguoiDung = sinhVien.Id,
+                    LoaiNguoiDung = (int)UserType.SinhVien
+                });
+                UnitOfWork.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

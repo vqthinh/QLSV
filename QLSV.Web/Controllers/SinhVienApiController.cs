@@ -24,7 +24,7 @@ namespace QLSV.Web.Controllers
         [HttpGet]
         public HttpResponseMessage Get(DataSourceLoadOptions loadOptions)
         {
-            var obj = DataSourceLoader.Load(_sinhVienService.GetAll(x=>x.Deleted==false), loadOptions);
+            var obj = DataSourceLoader.Load(_sinhVienService.Where(x=>x.Deleted==false), loadOptions);
             return Request.CreateResponse(obj);
         }
 
@@ -57,7 +57,7 @@ namespace QLSV.Web.Controllers
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Mã sinh viên đã tồn tại");
         }
 
         [HttpDelete]

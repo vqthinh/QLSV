@@ -175,6 +175,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiemRenLuyenController.cs" />
+    <Compile Include="Areas\Gv\GvAreaRegistration.cs" />
+    <Compile Include="Controllers\DiemRenLuyenApiController.cs" />
     <Compile Include="Controllers\SinhVienApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1383,6 +1386,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -1552,6 +1556,8 @@
     <Content Include="Areas\Admin\Views\SinhVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginInfo.cshtml" />
     <Content Include="Areas\Admin\Views\SinhVien\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\DiemRenLuyen\Index.cshtml" />
+    <Content Include="Areas\Gv\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1583,6 +1589,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Gv\Controllers\" />
+    <Folder Include="Areas\Gv\Models\" />
+    <Folder Include="Areas\Gv\Views\Shared\" />
     <Folder Include="Content\css\icons\" />
   </ItemGroup>
   <ItemGroup>

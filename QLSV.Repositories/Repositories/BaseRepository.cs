@@ -38,6 +38,11 @@ namespace QLSV.Repositories.Repositories
             return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).ToList();
         }
 
+        public IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().AsNoTracking().Where(predicate);
+        }
+
         private int _total;
 
         public int Total()

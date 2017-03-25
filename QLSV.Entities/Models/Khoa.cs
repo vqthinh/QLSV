@@ -2,16 +2,13 @@
 
 namespace QLSV.Entities.Models
 {
-    [Table("khoa")]
+    [Table("tbl_Khoa")]
     public class Khoa : IEntityBase
     {
-        [Column("id")]
         public int Id { get; set; }
-        [Column("ten_khoa")]
-        public string TenKhoa { get; set; }
-        [Column("ten_viet_tat")]
-        public string TenVietTat { get; set; }
-        [NotMapped]
+
+        public string Ten{ get; set; }
+
         public bool Deleted { get; set; }
     }
 }

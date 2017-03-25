@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using QLSV.Abstract.Repositories;
 using QLSV.Abstract.Services;
@@ -22,6 +23,11 @@ namespace QLSV.Services.Services
         public IList<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
         {
             return Repository.GetAll();
+        }
+
+        public IList<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Repository.Where(predicate).ToList();
         }
 
         public bool Add(TEntity entity)

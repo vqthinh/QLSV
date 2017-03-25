@@ -25,11 +25,11 @@ namespace QLSV.Services.Services
             switch (taiKhoan.LoaiNguoiDung)
             {
                 case (int)UserType.GiaoVu:
-                    var giaoVu = _sinhVienRepository.GetById(taiKhoan.IdNguoiDung);
+//                    var giaoVu = _sinhVienRepository.GetById(taiKhoan.IdNguoiDung);
                     return new LoginModel
                     {
-                        HoTen = giaoVu.HoDem + " " + giaoVu.Ten,
-                        IdNguoiDung = giaoVu.Id,
+                        HoTen = "Giáo Vụ",
+                        IdNguoiDung = 1,
                         LoaiNguoiDung = (int)UserType.GiaoVu,
                         TenDangNhap = taiKhoan.TenDangNhap
                     };

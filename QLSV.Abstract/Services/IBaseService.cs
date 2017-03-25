@@ -18,5 +18,7 @@ namespace QLSV.Abstract.Services
         TEntity GetById(int id);
 
         int Total();
+
+        IList<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
     }
 }
