@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using QLSV.Abstract.Repositories;
 using QLSV.Entities.Models;
 
@@ -18,6 +16,11 @@ namespace QLSV.Repositories.Repositories
         public List<Khoa> GetKhoas()
         {
             return _context.Set<Khoa>().ToList();
+        }
+
+        public IList<KhoaHoc> GetKhoaHocs()
+        {
+            return _context.Set<KhoaHoc>().ToList();
         }
     }
 }

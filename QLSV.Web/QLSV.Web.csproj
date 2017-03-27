@@ -176,8 +176,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DiemRenLuyenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GiaoVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LopHocPhanController.cs" />
     <Compile Include="Areas\Gv\GvAreaRegistration.cs" />
     <Compile Include="Controllers\DiemRenLuyenApiController.cs" />
+    <Compile Include="Controllers\GiaoVienApiController.cs" />
+    <Compile Include="Controllers\LopHocPhanApiController.cs" />
     <Compile Include="Controllers\SinhVienApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1558,6 +1562,9 @@
     <Content Include="Areas\Admin\Views\SinhVien\Add.cshtml" />
     <Content Include="Areas\Admin\Views\DiemRenLuyen\Index.cshtml" />
     <Content Include="Areas\Gv\Views\web.config" />
+    <Content Include="Areas\Admin\Views\GiaoVien\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LopHocPhan\MonHoc.cshtml" />
+    <Content Include="Areas\Admin\Views\LopHocPhan\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

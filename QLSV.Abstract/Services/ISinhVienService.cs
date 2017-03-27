@@ -9,5 +9,7 @@ namespace QLSV.Abstract.Services
         IList<SinhVien> GetListSinhViens(string keyword, int page, int size);
 
         IList<Khoa> GetKhoa();
+
+        IList<KhoaHoc> GetKhoaHocs();
     }
 }

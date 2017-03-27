@@ -92,5 +92,12 @@ namespace QLSV.Web.Controllers
             var obj = DataSourceLoader.Load(_sinhVienService.GetKhoa(), loadOptions);
             return Request.CreateResponse(obj);
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetKhoaHoc(DataSourceLoadOptions loadOptions)
+        {
+            var obj = DataSourceLoader.Load(_sinhVienService.GetKhoaHocs(), loadOptions);
+            return Request.CreateResponse(obj);
+        }
     }
 }

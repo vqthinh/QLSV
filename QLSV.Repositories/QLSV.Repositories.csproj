@@ -53,6 +53,8 @@
     <Compile Include="QLSVDbContext.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DiemRenLuyenRepository.cs" />
+    <Compile Include="Repositories\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\LopHocPhanRepository.cs" />
     <Compile Include="Repositories\LopRepository.cs" />
     <Compile Include="Repositories\KhoaRepository.cs" />
     <Compile Include="Repositories\SinhVienRepository.cs" />

@@ -56,5 +56,10 @@ namespace QLSV.Services.Services
             }
             return false;
         }
+
+        public IList<KhoaHoc> GetKhoaHocs()
+        {
+            return _sinhVienRepository.GetKhoaHocs();
+        }
     }
 }

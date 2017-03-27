@@ -3,20 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QLSV.Entities.Models
 {
-    [Table("tbl_SinhVien")]
-    public class SinhVien : IEntityBase
+    [Table("tbl_GiaoVien")]
+    public class GiaoVien : IEntityBase
     {
         public int Id { get; set; }
 
         public string HoDem { get; set; }
 
-        public string MaSv { get; set; }
+        public string MaGv { get; set; }
 
         public string Ten { get; set; }
-
-        public int? LopHocId { get; set; }
-
-        public int? KhoaHocId { get; set; }
 
         public DateTime? NgaySinh { get; set; }
 
@@ -40,25 +36,7 @@ namespace QLSV.Entities.Models
 
         public string NoiCap { get; set; }
 
-        public string HoTenCha { get; set; }
-
-        public string DienThoaiCha { get; set; }
-
-        public string HoTenMe { get; set; }
-
-        public string DienThoaiMe { get; set; }
-
         public bool GioiTinh { get; set; }
-
-        public int? KhoaId { get; set; }
-        [ForeignKey("LopHocId")]
-        public virtual Lop Lop { get; set; }
-
-        [ForeignKey("KhoaId")]
-        public virtual Khoa Khoa { get; set; }
-
-        [ForeignKey("KhoaHocId")]
-        public virtual KhoaHoc KhoaHoc { get; set; }
 
         public bool Deleted { get; set; }
 

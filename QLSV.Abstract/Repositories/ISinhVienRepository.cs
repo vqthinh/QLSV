@@ -6,5 +6,7 @@ namespace QLSV.Abstract.Repositories
     public interface ISinhVienRepository : IBaseRepository<SinhVien>
     {
         List<Khoa> GetKhoas();
+
+        IList<KhoaHoc> GetKhoaHocs();
     }
 }

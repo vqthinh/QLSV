@@ -1,6 +1,6 @@
 ﻿@using DevExtreme.AspNet.Mvc
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Quản lý giáo viên";
     Layout = "../Shared/_AdminLayout.cshtml";
 }
 
@@ -9,39 +9,14 @@
       .Columns(columns =>
       {
           columns.Add()
-              .DataField("MaSv")
-              .Caption("Mã SV");
+              .DataField("MaGv")
+              .Caption("Mã GV");
           columns.Add()
               .DataField("HoDem")
               .Caption("Họ Đệm");
           columns.Add()
               .DataField("Ten")
               .Caption("Tên");
-          columns.Add()
-              .DataField("KhoaHocId")
-              .Caption("Khóa Học")
-              .Lookup(lookup => lookup
-                  .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetKhoaHoc").Key("Id"))
-                  .DisplayExpr("Ten")
-                  .ValueExpr("Id")
-              );
-          columns.Add()
-              .DataField("KhoaId")
-              .Caption("Khoa")
-              .Lookup(lookup => lookup
-                  .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetKhoa").Key("Id"))
-                  .DisplayExpr("Ten")
-                  .ValueExpr("Id")
-              )
-              .SetCellValue("loadKhoa");
-          columns.Add()
-              .DataField("LopHocId")
-              .Caption("Lớp")
-              .Lookup(lookup => lookup
-                  .DataSource(d => d.WebApi().Controller("SinhVienApi").LoadAction("GetLop").LoadParams(new {id = new JS("khoaId")}).Key("Id"))
-                  .DisplayExpr("Ten")
-                  .ValueExpr("Id")
-              );
           columns.Add()
               .Caption("Ngày Sinh")
               .DataField("NgaySinh")
@@ -91,35 +66,18 @@
               .Caption("Nơi Cấp")
               .Visible(false);
           columns.Add()
-              .DataField("HoTenCha")
-              .Caption("Họ Tên Cha")
-              .Visible(false);
-          columns.Add()
-              .DataField("DienThoaiCha")
-              .Caption("Điện Thoại Cha")
-              .Visible(false);
-          columns.Add()
-              .DataField("HoTenMe")
-              .Caption("Họ Tên Mẹ")
-              .Visible(false);
-          columns.Add()
-              .DataField("DienThoaiMe")
-              .Caption("Điện Thoại Mẹ")
-              .Visible(false);
-          columns.Add()
               .DataField("GioiTinh")
               .Caption("Giới Tính")
               .Visible(false);
       })
       .HeaderFilter(headerFilter => headerFilter.Visible(true))
-      .OnEditorPreparing("onEditorPreparing")
       .Paging(paging => paging.PageSize(3))
       .Pager(pager =>
       {
           pager.ShowInfo(true);
           pager.InfoText("Trang {0}({1} trang)");
       })
-      .DataSource(d => d.WebApi().Controller("SinhVienApi").Key("Id"))
+      .DataSource(d => d.WebApi().Controller("GiaoVienApi").Key("Id"))
       .ShowBorders(true)
       .Editing(editing =>
       {
@@ -145,30 +103,9 @@
           c.Enabled(true);
           c.Title("Chọn cột hiển thị");
       })
-      )
+)
 
 <script>
-    var id = 0;
-    loadKhoa = function(rowData, value) {
-        id = value;
-        rowData.LopHocId = null;
-        this.defaultSetCellValue(rowData, value);
-    }
-    khoaId = function() {
-        return id;
-    }
-    onEditorPreparing = function(e) {
-        if (e.parentType === "dataRow" && e.dataField === "KhoaId") {
-            e.editorOptions.placeholder = "Chọn Khoa";
-        } else if (e.parentType === "dataRow" && e.dataField === "LopHocId") {
-            e.editorOptions.placeholder = "Chọn Lớp";
-        } else if (e.parentType === "dataRow" && e.dataField === "QuocTich") {
-            e.editorOptions.placeholder = "Chọn Quốc Tịch";
-        } else if (e.parentType === "dataRow" && e.dataField === "KhoaHocId") {
-            e.editorOptions.placeholder = "Chọn Khóa Học";
-        }
-
-    }
     getNationalites = function() {
         return nationalities;
     }

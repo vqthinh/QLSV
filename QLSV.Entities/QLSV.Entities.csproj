@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\GiaoVien.cs" />
     <Compile Include="IEntityBase.cs" />
     <Compile Include="Models\DataTableResult.cs" />
     <Compile Include="Models\DiemRenLuyen.cs" />
+    <Compile Include="Models\HocKy.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\Khoa.cs" />
     <Compile Include="Models\KhoaHoc.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Lop.cs" />
+    <Compile Include="Models\LopHocPhan.cs" />
+    <Compile Include="Models\MonHoc.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

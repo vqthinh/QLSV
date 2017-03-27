@@ -2,16 +2,14 @@
 
 namespace QLSV.Entities.Models
 {
-    [Table("tbl_KhoaHoc")]
-    public class KhoaHoc : IEntityBase
+    [Table("tbl_MonHoc")]
+    public class MonHoc : IEntityBase
     {
         public int Id { get; set; }
 
         public string Ten { get; set; }
 
-        public int NamBatDau { get; set; }
-
-        public int NamKetThuc { get; set; }
+        public string MaMonHoc { get; set; }
 
         public bool Deleted { get; set; }
     }

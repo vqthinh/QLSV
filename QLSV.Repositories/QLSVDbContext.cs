@@ -16,6 +16,11 @@ namespace QLSV.Repositories
         public DbSet<Khoa> Khoas { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<DiemRenLuyen> DiemRenLuyens { get; set; }
+        public DbSet<KhoaHoc> KhoaHocs { get; set; }
+        public DbSet<GiaoVien> GiaoViens { get; set; }
+        public DbSet<LopHocPhan> LopHocPhans { get; set; }
+        public DbSet<MonHoc> MonHocs { get; set; }
+        public DbSet<HocKy> HocKies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
